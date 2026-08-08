@@ -5,3 +5,6 @@ if not settings.supabase_url or not settings.supabase_key:
     raise ValueError("SUPABASE_URL and SUPABASE_KEY must be set in environmental variables or .env file.")
 
 supabase: Client = create_client(settings.supabase_url, settings.supabase_key)
+
+admin_key = settings.supabase_service_role_key or settings.supabase_key
+supabase_admin: Client = create_client(settings.supabase_url, admin_key)

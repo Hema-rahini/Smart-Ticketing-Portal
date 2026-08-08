@@ -1,2 +1,7 @@
+packages:
+  - "frontend"
+  - "backend"
+  - "mobile"
+  - "shared"
 allowBuilds:
-  sharp: false
+  sharp: set this to true or false

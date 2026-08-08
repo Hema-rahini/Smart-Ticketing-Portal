@@ -31,6 +31,17 @@ class UserResponse(UserBase):
     class Config:
         from_attributes = True
 
+class ManagerCreateRequest(BaseModel):
+    email: str
+    full_name: str
+    department: Optional[str] = None
+
+class UserCreateRequest(BaseModel):
+    email: str
+    full_name: str
+    role: Literal['employee', 'intern']
+    department: Optional[str] = None
+
 # Ticket schemas
 TicketStatus = Literal['open', 'in-progress', 'pending-review', 'completed', 'closed']
 TicketPriority = Literal['high', 'medium', 'low']
