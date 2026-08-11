@@ -94,6 +94,7 @@ export function AuthScreen() {
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input
                     id="email"
+                    data-testid="login-email-input"
                     type="email"
                     placeholder="you@company.com"
                     className="pl-10"
@@ -110,6 +111,7 @@ export function AuthScreen() {
                   <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input
                     id="password"
+                    data-testid="login-password-input"
                     type={showPassword ? 'text' : 'password'}
                     placeholder="••••••••"
                     className="pl-10 pr-10"
@@ -119,6 +121,7 @@ export function AuthScreen() {
                   />
                   <Button
                     type="button"
+                    data-testid="login-password-toggle"
                     variant="ghost"
                     size="icon"
                     className="absolute right-0 top-0 h-full px-3 hover:bg-transparent"
@@ -134,10 +137,10 @@ export function AuthScreen() {
               </div>
 
               {error && (
-                <p className="text-xs text-destructive font-medium">{error}</p>
+                <p data-testid="login-error-message" className="text-xs text-destructive font-medium">{error}</p>
               )}
 
-              <Button type="submit" className="w-full font-semibold" disabled={isLoading}>
+              <Button type="submit" data-testid="login-submit-button" className="w-full font-semibold" disabled={isLoading}>
                 {isLoading ? (
                   <span className="flex items-center gap-2">
                     <span className="h-4 w-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />

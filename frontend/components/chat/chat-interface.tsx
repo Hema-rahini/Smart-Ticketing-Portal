@@ -362,6 +362,7 @@ export function ChatInterface() {
                 </Button>
                 <div className="relative flex-1">
                   <Input
+                    data-testid="chat-message-input"
                     placeholder={activeTab === 'teams' ? `Message ${activeChannel?.name}...` : `Message ${selectedDirectUser?.name}...`}
                     className="pr-24"
                     value={newMessage}
@@ -377,7 +378,7 @@ export function ChatInterface() {
                     </Button>
                   </div>
                 </div>
-                <Button onClick={handleSendMessage} disabled={!newMessage.trim()}>
+                <Button data-testid="chat-send-button" onClick={handleSendMessage} disabled={!newMessage.trim()}>
                   <Send className="h-4 w-4" />
                 </Button>
               </div>

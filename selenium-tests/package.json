@@ -1,0 +1,21 @@
+{
+  "name": "smart-ticketing-selenium-tests",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "npx jest --runInBand --detectOpenHandles"
+  },
+  "dependencies": {
+    "chromedriver": "^133.0.0",
+    "exceljs": "^4.4.0",
+    "selenium-webdriver": "^4.28.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.1",
+    "@types/selenium-webdriver": "^4.1.28",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.7.3"
+  }
+}

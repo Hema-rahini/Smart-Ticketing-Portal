@@ -89,7 +89,7 @@ export function AnnouncementsList() {
         {isAdmin && (
           <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
             <DialogTrigger asChild>
-              <Button>
+              <Button data-testid="create-announcement-button">
                 <Plus className="h-4 w-4 mr-2" />
                 New Announcement
               </Button>
@@ -106,6 +106,7 @@ export function AnnouncementsList() {
                   <Label htmlFor="title">Title</Label>
                   <Input
                     id="title"
+                    data-testid="announcement-title-input"
                     placeholder="Announcement title"
                     value={newAnnouncement.title}
                     onChange={(e) => setNewAnnouncement({ ...newAnnouncement, title: e.target.value })}
@@ -115,6 +116,7 @@ export function AnnouncementsList() {
                   <Label htmlFor="content">Content</Label>
                   <Textarea
                     id="content"
+                    data-testid="announcement-content-input"
                     placeholder="Write your announcement..."
                     rows={6}
                     value={newAnnouncement.content}
@@ -127,6 +129,7 @@ export function AnnouncementsList() {
                   Cancel
                 </Button>
                 <Button
+                  data-testid="announcement-submit-button"
                   onClick={handleCreateAnnouncement}
                   disabled={!newAnnouncement.title || !newAnnouncement.content}
                 >

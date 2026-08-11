@@ -88,11 +88,11 @@ export function KanbanBoard() {
             const columnTickets = relevantTickets.filter(t => t.status === column.id)
             
             return (
-              <div key={column.id} className="flex flex-col">
+              <div key={column.id} data-testid={`kanban-column-${column.id}`} className="flex flex-col">
                 <div className="flex items-center gap-2 mb-3">
                   <div className={cn('h-3 w-3 rounded-full', column.color)} />
                   <h3 className="font-medium text-foreground">{column.title}</h3>
-                  <Badge variant="secondary" className="ml-auto">
+                  <Badge variant="secondary" className="ml-auto" data-testid={`kanban-column-count-${column.id}`}>
                     {columnTickets.length}
                   </Badge>
                 </div>
@@ -121,16 +121,30 @@ export function KanbanBoard() {
                                   ref={provided.innerRef}
                                   {...provided.draggableProps}
                                   {...provided.dragHandleProps}
+                                  data-testid={`kanban-card-${ticket.id}`}
                                   className={cn(
                                     'cursor-grab active:cursor-grabbing',
                                     snapshot.isDragging && 'shadow-lg ring-2 ring-primary'
                                   )}
                                 >
-                                  <CardContent className="p-3">
-                                    <h4 className="font-medium text-sm text-foreground line-clamp-2">
-                                      {ticket.title}
-                                    </h4>
-                                    <p className="text-xs text-muted-foreground line-clamp-2 mt-1">
+                                  <CardContent className="p-3 space-y-2">
+                                    <div className="flex items-start justify-between gap-2">
+                                      <h4 className="font-medium text-sm text-foreground line-clamp-2" data-testid={`kanban-card-title-${ticket.id}`}>
+                                        {ticket.title}
+                                      </h4>
+                                      <select
+                                        data-testid={`kanban-move-status-select-${ticket.id}`}
+                                        value={ticket.status}
+                                        onChange={(e) => updateTicket(ticket.id, { status: e.target.value as Ticket['status'] })}
+                                        className="text-[10px] bg-background border border-input rounded px-1 py-0.5 cursor-pointer"
+                                      >
+                                        <option value="open">Open</option>
+                                        <option value="in-progress">In Progress</option>
+                                        <option value="pending-review">Pending Review</option>
+                                        <option value="completed">Completed</option>
+                                      </select>
+                                    </div>
+                                    <p className="text-xs text-muted-foreground line-clamp-2">
                                       {ticket.description}
                                     </p>
 

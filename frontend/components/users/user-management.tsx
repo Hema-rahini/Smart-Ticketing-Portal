@@ -402,7 +402,7 @@ export function UserManagement({ showAddButton = true, filterRole, title = 'User
         {showAddButton && (currentUser?.role === 'admin' || currentUser?.role === 'manager') && (
           <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
             <DialogTrigger asChild>
-              <Button>
+              <Button data-testid="add-user-button">
                 <Plus className="h-4 w-4 mr-2" />
                 Add User
               </Button>
@@ -419,6 +419,7 @@ export function UserManagement({ showAddButton = true, filterRole, title = 'User
                   <Label htmlFor="name">Full Name</Label>
                   <Input
                     id="name"
+                    data-testid="add-user-name-input"
                     placeholder="John Doe"
                     value={newUser.name}
                     onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
@@ -428,6 +429,7 @@ export function UserManagement({ showAddButton = true, filterRole, title = 'User
                   <Label htmlFor="email">Email</Label>
                   <Input
                     id="email"
+                    data-testid="add-user-email-input"
                     type="email"
                     placeholder="john@company.com"
                     value={newUser.email}
@@ -441,7 +443,7 @@ export function UserManagement({ showAddButton = true, filterRole, title = 'User
                       value={newUser.role}
                       onValueChange={(value) => setNewUser({ ...newUser, role: value as UserRole })}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger data-testid="add-user-role-select">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -469,7 +471,7 @@ export function UserManagement({ showAddButton = true, filterRole, title = 'User
                       value={newUser.department}
                       onValueChange={(value) => setNewUser({ ...newUser, department: value })}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger data-testid="add-user-department-select">
                         <SelectValue placeholder="Select" />
                       </SelectTrigger>
                       <SelectContent>
@@ -483,14 +485,14 @@ export function UserManagement({ showAddButton = true, filterRole, title = 'User
                   </div>
                 </div>
                 {errorMsg && (
-                  <p className="text-sm text-destructive font-medium">{errorMsg}</p>
+                  <p data-testid="add-user-error-message" className="text-sm text-destructive font-medium">{errorMsg}</p>
                 )}
               </div>
               <DialogFooter>
                 <Button variant="outline" onClick={() => setIsAddDialogOpen(false)}>
                   Cancel
                 </Button>
-                <Button onClick={handleAddUser}>
+                <Button data-testid="add-user-submit-button" onClick={handleAddUser}>
                   Create Account
                 </Button>
               </DialogFooter>

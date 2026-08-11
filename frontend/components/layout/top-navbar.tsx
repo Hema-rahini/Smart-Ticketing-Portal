@@ -75,6 +75,7 @@ export function TopNavbar({ title }: TopNavbarProps) {
           <Button
             variant="ghost"
             size="icon"
+            data-testid="theme-toggle-button"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             className="h-9 w-9"
           >
@@ -86,11 +87,12 @@ export function TopNavbar({ title }: TopNavbarProps) {
           {/* Notifications */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="relative h-9 w-9">
+              <Button variant="ghost" size="icon" data-testid="notifications-bell-button" className="relative h-9 w-9">
                 <Bell className="h-4 w-4" />
                 {unreadCount > 0 && (
                   <Badge
                     variant="destructive"
+                    data-testid="notifications-unread-badge"
                     className="absolute -right-1 -top-1 h-5 w-5 rounded-full p-0 text-xs flex items-center justify-center"
                   >
                     {unreadCount}
@@ -136,14 +138,14 @@ export function TopNavbar({ title }: TopNavbarProps) {
           {/* User Menu */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="relative h-9 gap-2 px-2">
+              <Button variant="ghost" data-testid="user-profile-menu-button" className="relative h-9 gap-2 px-2">
                 <Avatar className="h-7 w-7">
                   <AvatarImage src={currentUser.avatar} />
                   <AvatarFallback className="bg-primary text-primary-foreground text-xs">
                     {currentUser.name.split(' ').map(n => n[0]).join('')}
                   </AvatarFallback>
                 </Avatar>
-                <span className="hidden md:inline-block text-sm font-medium">
+                <span data-testid="user-profile-menu-name" className="hidden md:inline-block text-sm font-medium">
                   {currentUser.name}
                 </span>
               </Button>
@@ -159,13 +161,13 @@ export function TopNavbar({ title }: TopNavbarProps) {
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild className="cursor-pointer">
-                <Link href="/profile">Profile</Link>
+                <Link href="/profile" data-testid="user-profile-link">Profile</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild className="cursor-pointer">
-                <Link href="/settings">Settings</Link>
+                <Link href="/settings" data-testid="user-settings-link">Settings</Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={logout} className="text-destructive focus:text-destructive cursor-pointer">
+              <DropdownMenuItem onClick={logout} data-testid="logout-button" className="text-destructive focus:text-destructive cursor-pointer">
                 Logout
               </DropdownMenuItem>
             </DropdownMenuContent>
