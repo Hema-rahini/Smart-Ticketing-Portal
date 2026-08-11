@@ -1,0 +1,21 @@
+{
+  "name": "smart-ticketing-load-tests",
+  "version": "1.0.0",
+  "description": "100 Load & Performance Tests for Smart Ticketing Platform Backend & Flutter Mobile App",
+  "main": "index.js",
+  "scripts": {
+    "test:k6": "npx jest --runInBand",
+    "test:appium-under-load": "npx jest --config jest.config.js appium-under-load",
+    "test": "npx jest --runInBand"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3"
+  }
+}
