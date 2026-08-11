@@ -163,6 +163,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                 ),
                                 const SizedBox(height: 6),
                                 TextFormField(
+                                  key: const Key('login_email_input'),
                                   controller: _emailController,
                                   style: const TextStyle(fontSize: 14.0),
                                   decoration: InputDecoration(
@@ -190,6 +191,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                 ),
                                 const SizedBox(height: 6),
                                 TextFormField(
+                                  key: const Key('login_password_input'),
                                   controller: _passwordController,
                                   obscureText: _obscurePassword,
                                   style: const TextStyle(fontSize: 14.0),
@@ -197,6 +199,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                     hintText: '••••••••',
                                     prefixIcon: const Icon(Icons.lock_outline, size: 18, color: Color(0xFF64748B)),
                                     suffixIcon: IconButton(
+                                      key: const Key('login_password_toggle'),
                                       icon: Icon(
                                         _obscurePassword
                                             ? Icons.visibility_outlined
@@ -225,6 +228,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                   width: double.infinity,
                                   height: 40.0,
                                   child: ElevatedButton(
+                                    key: const Key('login_submit_button'),
                                     onPressed: isLoading ? null : _signIn,
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: const Color(0xFF2563EB),
